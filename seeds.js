@@ -64,7 +64,27 @@ const characters = [
                 image: ""
             },
         ]
-    }
+    },
+    {
+        id: "c4",
+        name: "mimihime",
+        image: "https://static.wikia.nocookie.net/heavenly-delusion/images/7/70/Mimihime.png"
+    },
+    {
+        id: "c5",
+        name: "shiro",
+        image: "https://static.wikia.nocookie.net/heavenly-delusion/images/0/09/Shiro.png"
+    },
+    {
+        id: "c6",
+        name: "tokio",
+        image: "https://static.wikia.nocookie.net/heavenly-delusion/images/7/73/Tokio.png"
+    },
+    {
+        id: "c7",
+        name: "kona",
+        image: "https://static.wikia.nocookie.net/heavenly-delusion/images/c/c9/Kona.png"
+    },
 ]
 
 export { characters }
