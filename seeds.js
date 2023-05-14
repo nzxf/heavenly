@@ -68,6 +68,7 @@ const characters = [
     {
         id: "c4",
         name: "mimihime",
+        ability: ["superhuman hearing", "visions of the future and the past"],
         image: "https://static.wikia.nocookie.net/heavenly-delusion/images/7/70/Mimihime.png"
     },
     {
