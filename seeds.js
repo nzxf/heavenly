@@ -51,17 +51,17 @@ const characters = [
             {
                 year: 2024,
                 description: "kuku",
-                image: ""
+                image: "https://otakuusamagazine.com/wp-content/uploads/2023/04/tengoku-daimakyo1.jpeg"
             },
             {
                 year: 2028,
                 description: "kuku got sick and then died",
-                image: ""
+                image: "https://otakuusamagazine.com/wp-content/uploads/2023/04/tengoku-daimakyo1.jpeg"
             },
             {
                 year: 2039,
                 description: "hiruko fish attack boat, then killed by maru",
-                image: ""
+                image: "https://otakuusamagazine.com/wp-content/uploads/2023/04/tengoku-daimakyo1.jpeg"
             },
         ]
     },

@@ -40,7 +40,7 @@ const addChar = id => {
     // MID CONTAINER
     const midContainer = document.querySelector('.mid-container')
     let ids = callFive(id)
-    //
+    // NAMES
     for (let i = 0; i < ids.length; i++) {
         if (i === Math.floor(ids.length / 2)) {
             const nameButton = document.createElement("BUTTON")
@@ -57,13 +57,35 @@ const addChar = id => {
 
     // BOTTOM CONTAINER
     const bottomContainer = document.querySelector('.bottom-container')
-    // 
-    for (let i = 0; i < characters[id].ability.length; i++) {
-        const ability = document.createElement("P");
-        ability.classList.add("character-ability");
-        ability.textContent = characters[id].ability[i];
-        bottomContainer.append(ability)
+    // TIMELINE
+    const timeline = characters[id].timeline
+    for (let i = 0; i < timeline.length; i++) {
+        const timelineContainer = document.createElement("DIV")
+        timelineContainer.classList.add("timeline-container")
+        bottomContainer.append(timelineContainer)
+
+        const timelineYear = document.createElement("DIV")
+        timelineYear.classList.add("timeline-year")
+        timelineYear.textContent = timeline[i].year
+        timelineContainer.append(timelineYear)
+        
+        let an = timeline[i].year - 2024
+        let n = (an < 2) ? "year" : "years"
+        const timelineYearAN = document.createElement("DIV")
+        timelineYearAN.classList.add("timeline-year-an")
+        timelineYearAN.textContent = `${an} ${n} after Planet Nibiru hits Earth`
+        timelineContainer.append(timelineYearAN)
+
+        const timelineImage = document.createElement("DIV")
+        timelineImage.classList.add("timeline-image")
+        timelineImage.style.backgroundImage = `url(${timeline[i].image})`; 
+        timelineContainer.append(timelineImage)
+        
+        const timelineDescription = document.createElement("DIV")
+        timelineDescription.classList.add("timeline-description")
+        timelineDescription.textContent = timeline[i].description
+        timelineContainer.append(timelineDescription)
     }
 }
 
-addChar(0);
+addChar(2);
