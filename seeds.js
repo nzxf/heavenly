@@ -49,20 +49,38 @@ const characters = [
         image: "https://static.wikia.nocookie.net/heavenly-delusion/images/a/af/Kuku.png",
         timeline: [
             {
+                year: 2023,
+                description: "Kuku and the other children live and study at Takahara Academy.",
+                image: ""
+            },
+            {
+                year: 2023,
+                description: "Kuku brings Tokio to see baby creature in a secret laboratory room.",
+            },
+            {
                 year: 2024,
-                description: "kuku",
-                image: "https://otakuusamagazine.com/wp-content/uploads/2023/04/tengoku-daimakyo1.jpeg"
+                description: "After the government attack, Kuku and other children stay at the remains of Takahara Academy building.",
+            },
+            {
+                year: "n",
+                description: "Planet Nibiru crashed into France and uprooted the world. People refer it as 'The Great Cataclysm' and the 'Jeweled Spear of Heaven'."
             },
             {
                 year: 2028,
-                description: "kuku got sick and then died",
-                image: "https://otakuusamagazine.com/wp-content/uploads/2023/04/tengoku-daimakyo1.jpeg"
+                description: "Kuku became infected with the desease while traveling with Takezuka and Ohma.",
+            },
+            {
+                year: 2028,
+                description: "Based on her requeest, Kuku's body is thrown to the ocean. Later, it transforms into fish hiruko.",
             },
             {
                 year: 2039,
-                description: "hiruko fish attack boat, then killed by maru",
-                image: "https://otakuusamagazine.com/wp-content/uploads/2023/04/tengoku-daimakyo1.jpeg"
+                description: "Fish Hiruko attacks the boat that boards Kiruko and Maru. In the end, it is killed by Maru-touch.",
             },
+            {
+                year: 2039,
+                description: "a small body part of the fish Hiruko that wanted to be used for transplantion started to decay.",
+            }
         ]
     },
     {
