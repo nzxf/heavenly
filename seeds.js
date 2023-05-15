@@ -32,7 +32,7 @@ const characters = [
             },
             {
                 year: 2035,
-                description: "kiruko get out of hospital",
+                description: "After months, kiruko get out of hospital",
                 image: ""
             },
             {
@@ -63,7 +63,8 @@ const characters = [
             },
             {
                 year: "n",
-                description: "Planet Nibiru crashed into France and uprooted the world. People refer it as 'The Great Cataclysm' and the 'Jeweled Spear of Heaven'."
+                description: "Planet Nibiru crashed into France and uprooted the world. People refer it as 'The Great Cataclysm' and the 'Jeweled Spear of Heaven'.",
+                image: ""
             },
             {
                 year: 2028,
@@ -103,6 +104,16 @@ const characters = [
         id: "c7",
         name: "kona",
         image: "https://static.wikia.nocookie.net/heavenly-delusion/images/c/c9/Kona.png"
+    },
+    {
+        id: "c8",
+        name: "anzu",
+        image: "https://static.wikia.nocookie.net/heavenly-delusion/images/b/b7/Anzu.png"
+    },
+    {
+        id: "c9",
+        name: "Taka",
+        image: "https://static.wikia.nocookie.net/heavenly-delusion/images/1/1b/Taka.png"
     },
 ]
 

@@ -2,35 +2,27 @@ import { characters } from "./seeds.js";
 
 let errPic = "https://developers.google.com/static/maps/documentation/maps-static/images/error-image-generic.png";
 
-// const callFive = number => {
-//     let maxNumb = characters.length - 1
-//     let result = []
-//     switch (number) {
-//         case 0:
-//             result.push(maxNumb - 1, maxNumb, number, number + 1, number + 2)
-//             break;
-//         case 1:
-//             result.push(maxNumb, number - 1, number, number + 1, number + 2)
-//             break;
-//         case characters.length - 2:
-//             result.push(number - 2, number - 1, number, number + 1, 0)
-//             break;
-//         case maxNumb:
-//             result.push(number - 2, number - 1, number, 0, 1)
-//             break;
-//         default:
-//             result.push(number - 2, number - 1, number, number + 1, number + 2)
-//     }
-//     return result
-// }
-
-
-const numAround = (arr, mid, around = 2) => {
+const makeArch = (highestNum, howMany) => {
     let result = [];
-    for (let i = mid - around; i <= around; i++) {
+    // bottom up
+    for (let i = highestNum - howMany; i < highestNum; i++){
+      result.push(i * 1.5)
+    }
+    // mid + top down
+    for (let i = highestNum; i >= highestNum - howMany; i--){
+      result.push(i * 1.5)
+    }
+    return result
+  }
+
+
+// Call numbers around middle number
+const numAround = (arr, mid, around) => {
+    let result = [];
+    for (let i = mid - around; i <= mid + around; i++) {
         if (i < 0) {
             result.push(i + arr.length)
-        } else if (i > arr.length - 1) {
+        } else if (i >= arr.length) {
             result.push(i - arr.length)
         } else {
             result.push(i)
@@ -39,26 +31,37 @@ const numAround = (arr, mid, around = 2) => {
     return result
 }
 
-
 const addChar = id => {
     // TOP CONTAINER
     const topContainer = document.querySelector('.top-container')
-    // 
-    const charContainer = document.createElement('DIV');
-    charContainer.classList.add("character-container");
-    topContainer.append(charContainer);
-
-    const image = document.createElement("BUTTON");
-    image.classList.add("character-image");
-    image.style.backgroundImage = `url(${characters[id].image})`;
-    charContainer.append(image);
+    
+    let charAround = numAround(characters, id, 4);
+    let charArch = makeArch(9,4);
+    // console.log(charAround)
+    // console.log(charArch)
+    for (let i = 0; i < charAround.length; i++){
+        // 
+        const charContainer = document.createElement('DIV');
+        charContainer.classList.add("character-container");
+        topContainer.append(charContainer);
+        // IMAGE
+        const image = document.createElement("DIV");
+        if (i === Math.floor(charAround.length/2)) {
+            image.classList.add("character-image", "character-image-main");
+        } else {
+            image.classList.add("character-image");
+            image.style.width = `${charArch[i]}rem`
+        }
+        image.style.backgroundImage = `url(${characters[charAround[i]].image})`;
+        charContainer.append(image);
+    }
 
     // MID CONTAINER
     const midContainer = document.querySelector('.mid-container')
 
     // NAMES
     const nameButton = document.createElement("BUTTON")
-            nameButton.classList.add("character-name", "character-name-focus")
+            nameButton.classList.add("character-name")
             nameButton.textContent = characters[id].name.toUpperCase()
             midContainer.append(nameButton)
 
@@ -106,4 +109,4 @@ const addChar = id => {
     }
 }
 
-addChar(0);
+addChar(2);
