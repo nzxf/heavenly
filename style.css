@@ -84,16 +84,17 @@ main {
 .bottom-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .timeline-container {
     width: 230px;
     height: auto;
-    margin: 0px 5px;
-    border-radius: 10px;
-    
+    margin: 5px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     background-image: linear-gradient(85deg, rgb(50, 55, 57), rgb(29, 31, 32));
 }
 
@@ -104,29 +105,33 @@ main {
     margin: 3px 0;
     width: 100%;
     height: 100px;
+    opacity: 0.2;
 }
 
 .timeline-year,
 .timeline-year-an,
 .timeline-description {
     color: rgba(255, 255, 255, 0.7);
-    padding: 3.5px 7.5px;
+    padding: 3.5px 9px 5px;
 }
 
 .timeline-description {
-    height: 50px;
-    text-align: justify;
+    height: 6rem;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    overflow: scroll;
+    /* padding-bottom: 10px; */
 }
 
 .timeline-year {
     font-weight: bold;
+    padding-top: 10px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    color: rgb(31, 64, 255);
 }
 
 .timeline-year-an {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
