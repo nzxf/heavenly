@@ -5,15 +5,15 @@ let errPic = "https://developers.google.com/static/maps/documentation/maps-stati
 const makeArch = (highestNum, howMany) => {
     let result = [];
     // bottom up
-    for (let i = highestNum - howMany; i < highestNum; i++){
-      result.push(i)
+    for (let i = highestNum - howMany; i < highestNum; i++) {
+        result.push(i)
     }
     // mid + top down
-    for (let i = highestNum; i >= highestNum - howMany; i--){
-      result.push(i)
+    for (let i = highestNum; i >= highestNum - howMany; i--) {
+        result.push(i)
     }
     return result
-  }
+}
 
 
 // Call numbers around middle number
@@ -34,20 +34,20 @@ const numAround = (arr, mid, around) => {
 const addChar = id => {
     // TOP CONTAINER
     const topContainer = document.querySelector('.top-container')
-    
+
     let sideChar = 2;
     let charAround = numAround(characters, id, sideChar);
-    let charArch = makeArch(9,sideChar);
+    let charArch = makeArch(9, sideChar);
     // console.log(charAround)
     // console.log(charArch)
-    for (let i = 0; i < charAround.length; i++){
+    for (let i = 0; i < charAround.length; i++) {
         // 
         const charContainer = document.createElement('DIV');
         charContainer.classList.add("character-container");
         topContainer.append(charContainer);
         // IMAGE
         const image = document.createElement("DIV");
-        if (i === Math.floor(charAround.length/2)) {
+        if (i === Math.floor(charAround.length / 2)) {
             image.classList.add("character-image", "character-image-main");
         } else {
             image.classList.add("character-image");
@@ -62,16 +62,16 @@ const addChar = id => {
 
     // NAMES
     const nameButton = document.createElement("BUTTON")
-            nameButton.classList.add("character-name")
-            nameButton.textContent = characters[id].name.toUpperCase()
-            midContainer.append(nameButton)
+    nameButton.classList.add("character-name")
+    nameButton.textContent = characters[id].name.toUpperCase()
+    midContainer.append(nameButton)
 
     // BOTTOM CONTAINER
     const bottomContainer = document.querySelector('.bottom-container')
     // TIMELINE
     const timeline = characters[id].timeline
     for (let i = 0; i < timeline.length; i++) {
-        const timelineContainer = document.createElement("DIV")
+        const timelineContainer = document.createElement("BUTTON")
         timelineContainer.classList.add("timeline-container")
         bottomContainer.append(timelineContainer)
 
@@ -93,13 +93,13 @@ const addChar = id => {
         if (timeline[i].year === 'n') {
             timelineYear.textContent = "2024" // "Nov 11th 2024, 2:14am JST"
             timelineYear.style.color = 'rgba(255, 0, 0, 0.74)'
-            timelineYearAN.textContent =   `The day of the Great Cataclysm`
+            timelineYearAN.textContent = `The day of the Great Cataclysm`
         }
-        
+
         // IMAGE (TIMELINE)
         const timelineImage = document.createElement("DIV")
         timelineImage.classList.add("timeline-image")
-        timelineImage.style.backgroundImage = `url(${timeline[i].image})`; 
+        timelineImage.style.backgroundImage = `url(${timeline[i].image})`;
         timelineContainer.append(timelineImage)
 
         // DESCRIPTION
@@ -107,7 +107,18 @@ const addChar = id => {
         timelineDescription.classList.add("timeline-description")
         timelineDescription.textContent = timeline[i].description
         timelineContainer.append(timelineDescription)
+
     }
+    
+    const timelineButtons = document.querySelectorAll(".timeline-container")
+    timelineButtons.forEach(button => button.addEventListener('click', function(e) {
+        // e.stopPropagation();
+        document.querySelectorAll('.timeline-container').forEach(tl=> tl.classList.toggle("timeline-container-active"))
+        document.querySelectorAll('.timeline-year-an').forEach(tl=> tl.classList.toggle("timeline-year-an-active"))
+        document.querySelectorAll('.timeline-description').forEach(tl=> tl.classList.toggle("timeline-description-active"))
+    }))
+
 }
+
 
 addChar(2);
