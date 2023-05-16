@@ -108,16 +108,13 @@ const addChar = id => {
         timelineDescription.textContent = timeline[i].description
         timelineContainer.append(timelineDescription)
 
+        // EVENTLISTENER
+        timelineContainer.addEventListener('click', function() {
+            timelineContainer.classList.toggle("timeline-container-active")
+            timelineYearAN.classList.toggle("timeline-year-an-active")
+            timelineDescription.classList.toggle("timeline-description-active")
+        })
     }
-    
-    const timelineButtons = document.querySelectorAll(".timeline-container")
-    timelineButtons.forEach(button => button.addEventListener('click', function(e) {
-        // e.stopPropagation();
-        document.querySelectorAll('.timeline-container').forEach(tl=> tl.classList.toggle("timeline-container-active"))
-        document.querySelectorAll('.timeline-year-an').forEach(tl=> tl.classList.toggle("timeline-year-an-active"))
-        document.querySelectorAll('.timeline-description').forEach(tl=> tl.classList.toggle("timeline-description-active"))
-    }))
-
 }
 
 
