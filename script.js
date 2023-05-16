@@ -6,11 +6,11 @@ const makeArch = (highestNum, howMany) => {
     let result = [];
     // bottom up
     for (let i = highestNum - howMany; i < highestNum; i++){
-      result.push(i * 1.5)
+      result.push(i)
     }
     // mid + top down
     for (let i = highestNum; i >= highestNum - howMany; i--){
-      result.push(i * 1.5)
+      result.push(i)
     }
     return result
   }
@@ -35,8 +35,9 @@ const addChar = id => {
     // TOP CONTAINER
     const topContainer = document.querySelector('.top-container')
     
-    let charAround = numAround(characters, id, 4);
-    let charArch = makeArch(9,4);
+    let sideChar = 2;
+    let charAround = numAround(characters, id, sideChar);
+    let charArch = makeArch(9,sideChar);
     // console.log(charAround)
     // console.log(charArch)
     for (let i = 0; i < charAround.length; i++){
@@ -90,7 +91,7 @@ const addChar = id => {
         timelineContainer.append(timelineYearAN)
 
         if (timeline[i].year === 'n') {
-            timelineYear.textContent = "2024, Nov 11th" // "Nov 11th 2024, 2:14am JST"
+            timelineYear.textContent = "2024" // "Nov 11th 2024, 2:14am JST"
             timelineYear.style.color = 'rgba(255, 0, 0, 0.74)'
             timelineYearAN.textContent =   `The day of the Great Cataclysm`
         }
@@ -98,7 +99,7 @@ const addChar = id => {
         // IMAGE (TIMELINE)
         const timelineImage = document.createElement("DIV")
         timelineImage.classList.add("timeline-image")
-        timelineImage.style.backgroundImage = `url(${errPic})` //`url(${timeline[i].image})`; 
+        timelineImage.style.backgroundImage = `url(${timeline[i].image})`; 
         timelineContainer.append(timelineImage)
 
         // DESCRIPTION
