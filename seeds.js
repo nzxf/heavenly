@@ -51,36 +51,42 @@ const characters = [
             {
                 year: 2023,
                 description: "Kuku and the other children live and study at Takahara Academy.",
-                image: ""
+                image: "images/kuku/kuku-academy.png"
             },
             {
                 year: 2023,
-                description: "Kuku brings Tokio to see baby creature in a secret laboratory room.",
+                description: "Kuku brings Tokio to see baby creature in a secret laboratory room. When they left the room, one of them call Tokio's name.",
+                image: "images/kuku/kuku-tokio.png"
             },
             {
                 year: 2024,
                 description: "After the government attack, Kuku and other children stay at the remains of Takahara Academy building.",
+                image: "images/kuku/kuku-stay.png"
             },
             {
                 year: "n",
                 description: "Planet Nibiru crashed into France and uprooted the world. People refer it as 'The Great Cataclysm' and the 'Jeweled Spear of Heaven'.",
-                image: ""
+                image: "images/cataclysm.png"
             },
             {
                 year: 2028,
                 description: "Kuku became infected with the desease while traveling with Takezuka and Ohma.",
+                image: "images/kuku/kuku-infected.png"
             },
             {
                 year: 2028,
                 description: "Based on her requeest, Kuku's body is thrown to the ocean. Later, it transforms into fish hiruko.",
+                image: "images/kuku/kuku-transform.png"
             },
             {
                 year: 2039,
                 description: "Fish Hiruko attacks the boat that boards Kiruko and Maru. In the end, it is killed by Maru-touch.",
+                image: "images/kuku/fish-hiruko.png"
             },
             {
                 year: 2039,
                 description: "a small body part of the fish Hiruko that wanted to be used for transplantion started to decay.",
+                image: "images/kuku/fish-hiruko-remnant.png"
             }
         ]
     },
