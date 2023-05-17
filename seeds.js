@@ -46,6 +46,8 @@ const characters = [
         id: "c3",
         name: "kuku",
         ability: ["vertical surface climbing"],
+        gender: "intersex",
+        species: "Genetically modified human",
         image: "https://static.wikia.nocookie.net/heavenly-delusion/images/a/af/Kuku.png",
         timeline: [
             {

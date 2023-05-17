@@ -68,6 +68,18 @@ const addChar = id => {
 
     // BOTTOM CONTAINER
     const bottomContainer = document.querySelector('.bottom-container')
+
+    // STARTPOINT + 1st CONNECTOR
+    const startPoint = document.createElement("DIV")
+    startPoint.classList.add("point", "start-point")
+    startPoint.textContent = "PAST"
+    bottomContainer.append(startPoint)
+
+    const connector = document.createElement('DIV')
+    connector.classList.add("connector")
+    bottomContainer.append(connector)
+
+
     // TIMELINE
     const timeline = characters[id].timeline
     for (let i = 0; i < timeline.length; i++) {
@@ -75,12 +87,17 @@ const addChar = id => {
         timelineContainer.classList.add("timeline-container")
         bottomContainer.append(timelineContainer)
 
+        // CONNECTOR
+            const connector = document.createElement('DIV')
+            connector.classList.add("connector")
+            bottomContainer.append(connector)
+        
+        // YEAR
         const timelineYear = document.createElement("DIV")
         timelineYear.classList.add("timeline-year")
         timelineYear.textContent = timeline[i].year
         timelineContainer.append(timelineYear)
 
-        // YEAR
         let an = timeline[i].year - 2024
         let yearN = (an < 0) ? an * an : an
         let yearS = (an < 2) ? "year" : "years"
@@ -113,8 +130,15 @@ const addChar = id => {
             timelineContainer.classList.toggle("timeline-container-active")
             timelineYearAN.classList.toggle("timeline-year-an-active")
             timelineDescription.classList.toggle("timeline-description-active")
+
         })
+        
     }
+        // ENDPOINT
+        const endPoint = document.createElement("DIV")
+        endPoint.classList.add("point", "end-point")
+        endPoint.textContent = "FUTURE"
+        bottomContainer.append(endPoint)
 }
 
 
