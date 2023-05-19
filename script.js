@@ -15,7 +15,6 @@ const makeArch = (highestNum, howMany) => {
     return result
 }
 
-
 // Call numbers around middle number
 const numAround = (arr, mid, around) => {
     let result = [];
@@ -34,16 +33,17 @@ const numAround = (arr, mid, around) => {
 const addChar = id => {
     // TOP CONTAINER
     const topContainer = document.querySelector('.top-container')
+    while (topContainer.hasChildNodes()) {
+        topContainer.removeChild(topContainer.firstChild)
+    }
 
-    let sideChar = 2;
+    let sideChar = 4;
     let charAround = numAround(characters, id, sideChar);
-    let charArch = makeArch(9, sideChar);
-    // console.log(charAround)
-    // console.log(charArch)
+    let charArch = makeArch(7, sideChar);
     for (let i = 0; i < charAround.length; i++) {
-        // 
-        const charContainer = document.createElement('DIV');
+        const charContainer = document.createElement('BUTTON');
         charContainer.classList.add("character-container");
+        charContainer.value = charAround[i]
         topContainer.append(charContainer);
         // IMAGE
         const image = document.createElement("DIV");
@@ -55,10 +55,18 @@ const addChar = id => {
         }
         image.style.backgroundImage = `url(${characters[charAround[i]].image})`;
         charContainer.append(image);
+
+        charContainer.addEventListener('click', function() {
+            console.log(characters[charAround[i]].name)
+            addChar(charAround[i])
+        })
     }
 
     // MID CONTAINER
     const midContainer = document.querySelector('.mid-container')
+    while (midContainer.hasChildNodes()) {
+        midContainer.removeChild(midContainer.firstChild)   
+    }
 
     // NAMES
     const nameButton = document.createElement("BUTTON")
@@ -68,30 +76,35 @@ const addChar = id => {
 
     // BOTTOM CONTAINER
     const bottomContainer = document.querySelector('.bottom-container')
-
-    // STARTPOINT + 1st CONNECTOR
-    const startPoint = document.createElement("DIV")
-    startPoint.classList.add("point", "start-point")
-    startPoint.textContent = "PAST"
-    bottomContainer.append(startPoint)
-
-    const connector = document.createElement('DIV')
-    connector.classList.add("connector")
-    bottomContainer.append(connector)
-
+    while (bottomContainer.hasChildNodes()) {
+        bottomContainer.removeChild(bottomContainer.firstChild)   
+    }
 
     // TIMELINE
     const timeline = characters[id].timeline
     for (let i = 0; i < timeline.length; i++) {
-        const timelineContainer = document.createElement("BUTTON")
+
+        // STARTPOINT + 1st CONNECTOR
+        if (i == 0) {
+            const startPoint = document.createElement("DIV")
+            startPoint.classList.add("point", "start-point")
+            startPoint.textContent = "PAST"
+            bottomContainer.append(startPoint)
+
+            const connector = document.createElement('DIV')
+            connector.classList.add("connector")
+            bottomContainer.append(connector)
+        }
+
+        const timelineContainer = document.createElement("DIV")
         timelineContainer.classList.add("timeline-container")
         bottomContainer.append(timelineContainer)
 
         // CONNECTOR
-            const connector = document.createElement('DIV')
-            connector.classList.add("connector")
-            bottomContainer.append(connector)
-        
+        const connector = document.createElement('DIV')
+        connector.classList.add("connector")
+        bottomContainer.append(connector)
+
         // YEAR
         const timelineYear = document.createElement("DIV")
         timelineYear.classList.add("timeline-year")
@@ -126,19 +139,26 @@ const addChar = id => {
         timelineContainer.append(timelineDescription)
 
         // EVENTLISTENER
-        timelineContainer.addEventListener('click', function() {
+        const toggle = (e) => {
             timelineContainer.classList.toggle("timeline-container-active")
+            timelineImage.classList.toggle("timeline-image-active")
             timelineYearAN.classList.toggle("timeline-year-an-active")
             timelineDescription.classList.toggle("timeline-description-active")
+            e.stopPropagation()
+        }
+    timelineContainer.addEventListener('click', toggle, function(e) {
+        e.stopPropagation()
+    } )
 
-        })
-        
-    }
         // ENDPOINT
-        const endPoint = document.createElement("DIV")
-        endPoint.classList.add("point", "end-point")
-        endPoint.textContent = "FUTURE"
-        bottomContainer.append(endPoint)
+        if (i == timeline.length - 1) {
+            const endPoint = document.createElement("DIV")
+            endPoint.classList.add("point", "end-point")
+            endPoint.textContent = "FUTURE"
+            bottomContainer.append(endPoint)
+        }
+
+    }
 }
 
 

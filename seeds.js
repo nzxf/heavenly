@@ -126,7 +126,7 @@ const anzu = Character(
     "https://static.wikia.nocookie.net/heavenly-delusion/images/b/b7/Anzu.png"
 )
 const taka = Character(
-    "Taka",
+    "taka",
     "https://static.wikia.nocookie.net/heavenly-delusion/images/1/1b/Taka.png"
 )
 
