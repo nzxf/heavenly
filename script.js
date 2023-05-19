@@ -50,14 +50,13 @@ const addChar = id => {
         if (i === Math.floor(charAround.length / 2)) {
             image.classList.add("character-image", "character-image-main");
         } else {
-            image.classList.add("character-image");
+            image.classList.add("character-image", `character-image-${charArch[i]-2}`);
             image.style.width = `${charArch[i]}rem`
         }
         image.style.backgroundImage = `url(${characters[charAround[i]].image})`;
         charContainer.append(image);
 
         charContainer.addEventListener('click', function() {
-            console.log(characters[charAround[i]].name)
             addChar(charAround[i])
         })
     }
@@ -82,6 +81,12 @@ const addChar = id => {
 
     // TIMELINE
     const timeline = characters[id].timeline
+
+    // error hadler    
+    if (timeline == undefined) {
+        return console.log("no timeline yet")
+    }
+
     for (let i = 0; i < timeline.length; i++) {
 
         // STARTPOINT + 1st CONNECTOR
