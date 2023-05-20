@@ -31,12 +31,25 @@ const numAround = (arr, mid, around) => {
 }
 
 const addChar = id => {
-    // TOP CONTAINER
     const topContainer = document.querySelector('.top-container')
     while (topContainer.hasChildNodes()) {
         topContainer.removeChild(topContainer.firstChild)
     }
+    const midContainer = document.querySelector('.mid-container')
+    while (midContainer.hasChildNodes()) {
+        midContainer.removeChild(midContainer.firstChild)   
+    }
+    const bottomContainer = document.querySelector('.bottom-container')
+    while (bottomContainer.hasChildNodes()) {
+        bottomContainer.removeChild(bottomContainer.firstChild)   
+    }
 
+    // Input error hadnler
+    if (id == undefined) {
+        return console.log("Try input another name")
+    }
+
+    // TOP CONTAINER
     let sideChar = 4;
     let charAround = numAround(characters, id, sideChar);
     let charArch = makeArch(7, sideChar);
@@ -62,11 +75,6 @@ const addChar = id => {
     }
 
     // MID CONTAINER
-    const midContainer = document.querySelector('.mid-container')
-    while (midContainer.hasChildNodes()) {
-        midContainer.removeChild(midContainer.firstChild)   
-    }
-
     // NAMES
     const nameButton = document.createElement("BUTTON")
     nameButton.classList.add("character-name")
@@ -74,11 +82,6 @@ const addChar = id => {
     midContainer.append(nameButton)
 
     // BOTTOM CONTAINER
-    const bottomContainer = document.querySelector('.bottom-container')
-    while (bottomContainer.hasChildNodes()) {
-        bottomContainer.removeChild(bottomContainer.firstChild)   
-    }
-
     // TIMELINE
     const timeline = characters[id].timeline
 
@@ -127,7 +130,7 @@ const addChar = id => {
 
         if (timeline[i].year === 'n') {
             timelineYear.textContent = "2024" // "Nov 11th 2024, 2:14am JST"
-            timelineYear.style.color = 'rgba(255, 0, 0, 0.74)'
+            timelineYear.classList.add("timeline-year-red")
             timelineYearAN.textContent = `The day of the Great Cataclysm`
         }
 
@@ -166,5 +169,18 @@ const addChar = id => {
     }
 }
 
+const charNames = characters.map(char => char.name)
+const search = document.querySelector("#search-input")
+search.addEventListener('submit', function(e){
+    e.preventDefault();
+    let input = search.elements.search.value
+    if (charNames.includes(input)) {
+        console.log(`All right, ${input}'s timeline coming right up.`)
+        addChar(charNames.indexOf(input))
+    } else {
+        console.log(`Character named '${input}' does not exist, or not yet added to our database.`)
+        addChar();
+    }
+})
 
-addChar(2);
+addChar(1);
