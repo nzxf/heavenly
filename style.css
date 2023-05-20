@@ -1,6 +1,6 @@
 :root {
     --darkish: #1d1d1d;
-    --greyish: #838383;
+    --greyish: #d4d4d4;
     --blueish: rgb(0, 102, 255);
     --pinkish: #F99496;
 }
@@ -46,13 +46,19 @@ form {
 }
 
 #search {
-    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
     padding-left: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .submit-button {
-    background-color: transparent;
-    transform: translateX(-15px);
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0 .5rem;
 }
 
 .top-container {
@@ -137,9 +143,12 @@ form {
     height: 35px;
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 800;
     color: var(--darkish);
-    font-size: 1.7rem;
+    font-size: 2rem;
 }
 
 .bottom-container {
@@ -330,4 +339,15 @@ form {
     .timeline-image-active {
         height: 65%;
     }
+}
+
+.not-found {
+    height:100%;
+    width: 80%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--darkish);
+    font-weight: 600;
 }

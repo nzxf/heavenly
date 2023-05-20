@@ -30,16 +30,16 @@ const numAround = (arr, mid, around) => {
     return result
 }
 
+const topContainer = document.querySelector('.top-container')
+const midContainer = document.querySelector('.mid-container')
+const bottomContainer = document.querySelector('.bottom-container')
 const addChar = id => {
-    const topContainer = document.querySelector('.top-container')
     while (topContainer.hasChildNodes()) {
         topContainer.removeChild(topContainer.firstChild)
     }
-    const midContainer = document.querySelector('.mid-container')
     while (midContainer.hasChildNodes()) {
         midContainer.removeChild(midContainer.firstChild)   
     }
-    const bottomContainer = document.querySelector('.bottom-container')
     while (bottomContainer.hasChildNodes()) {
         bottomContainer.removeChild(bottomContainer.firstChild)   
     }
@@ -76,7 +76,7 @@ const addChar = id => {
 
     // MID CONTAINER
     // NAMES
-    const nameButton = document.createElement("BUTTON")
+    const nameButton = document.createElement("DIV")
     nameButton.classList.add("character-name")
     nameButton.textContent = characters[id].name.toUpperCase()
     midContainer.append(nameButton)
@@ -173,14 +173,19 @@ const charNames = characters.map(char => char.name)
 const search = document.querySelector("#search-input")
 search.addEventListener('submit', function(e){
     e.preventDefault();
-    let input = search.elements.search.value
+    let input = search.elements.search.value.toLowerCase()
     if (charNames.includes(input)) {
         console.log(`All right, ${input}'s timeline coming right up.`)
         addChar(charNames.indexOf(input))
     } else {
-        console.log(`Character named '${input}' does not exist, or not yet added to our database.`)
         addChar();
+        const notFound = document.createElement("P")
+        notFound.classList.add("not-found")
+        notFound.innerText = `Character named '${input}' does not exist, \nor not yet added to our database.`
+        topContainer.append(notFound)
     }
+    // RESET
+    search.elements.search.value = "";
 })
 
 addChar(1);
